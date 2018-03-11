@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StarWars.Views.MainPage"
+             Title="{Binding Title}">
+
+    
+
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+        
+        
+        <Button BackgroundColor="BlueViolet" TextColor="White" Command="{Binding LoadingPersonsCommand}" Text="Ver Personagens" />
+
+        <Label Text="{Binding MsgErro}" />
+
+        <ListView ItemsSource="{Binding Persons}">
+            <ListView.Behaviors>
+                <!--Vinculo por meio do Behavio a um comando da ViewModel-->
+                <!--<bh:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ItemProfissionalCommand}" EventArgsParameterPath="Item"/>-->
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <!--<ViewCell.ContextActions>
+                            <MenuItem Text="Excluir" Command="{Binding Source={x:Reference TelaPrincipal}, Path=BindingContext.ExcluirTarefaCommand}" CommandParameter="{Binding .}"></MenuItem>
+                            <MenuItem Text="Editar" Command="{Binding Source={x:Reference TelaPrincipal}, Path=BindingContext.EditarTarefaCommand}" CommandParameter="{Binding .}"></MenuItem>
+                        </ViewCell.ContextActions>-->
+                        <StackLayout Orientation="Horizontal" Padding="10, 5, 10, 5">
+                            <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                            <Label Text="{Binding Hair_color}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />                            
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>  
+    
+    
+
+</ContentPage>
